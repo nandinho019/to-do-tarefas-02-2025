@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gerenciar.css">
     <title>Gerenciador de Tarefas</title>
 </head>
 <body>
@@ -16,21 +16,26 @@
         </nav>
     </div>
 
-    <h1>Cadastro de Usuários</h1>
-    <form id="userForm">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-        <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
-        <button type="submit">Cadastrar</button>
-    </form>
-    <div id="mensagem"></div>
+    <h1>Tarefas</h1>
+    <div class="kanban">
+        <div class="kanban-col">
+            <h2>A Fazer</h2>
+            <div id="afazer"></div>
+        </div>
+        <div class="kanban-col">
+            <h2>Fazendo</h2>
+            <div id="fazendo"></div>
+        </div>
+        <div class="kanban-col">
+            <h2>Pronto</h2>
+            <div id="pronto"></div>
+        </div>
+    </div>
 
     <div style="text-align:center; margin-top: 40px; font-size: 1.3em;">
 
     </div>
+
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
