@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root@localhost:3306/tarefas"
 }
 
 model Usuario {
@@ -15,19 +15,20 @@ model Usuario {
 }
 
 model Tarefa {
-  id         Int      @id @default(autoincrement())
-  descricao  String
-  setor      String
-  prioridade Prioridade
-  status     Status   @default(A_FAZER)
-  usuarioId  Int
-  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+  id           Int       @id @default(autoincrement())
+  descricao    String
+  setor        String
+  prioridade   Prioridade
+  dataCadastro DateTime  @default(now())
+  status       Status    @default(A_FAZER)
+  usuarioId    Int
+  usuario      Usuario   @relation(fields: [usuarioId], references: [id])
 }
 
 enum Prioridade {
-  Baixa
-  Média
-  Alta
+  BAIXA
+  MEDIA
+  ALTA
 }
 
 enum Status {

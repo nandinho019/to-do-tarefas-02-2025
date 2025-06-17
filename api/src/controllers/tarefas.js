@@ -32,6 +32,7 @@ const listarTarefas = async (req, res) => {
 const atualizarTarefa = async (req, res) => {
   const { id } = req.params;
   const { descricao, setor, prioridade, usuarioId, status } = req.body;
+  console.log('Atualizando tarefa id:', id);
 
   try {
     const tarefa = await prisma.tarefa.update({
