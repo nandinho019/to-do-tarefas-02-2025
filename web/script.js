@@ -139,3 +139,29 @@ document.getElementById('userForm')?.addEventListener('submit', function(e) {
 
 
 });
+
+window.editarTarefa = function(id) {
+    let tarefas = JSON.parse(localStorage.getItem('tarefas') || '[]');
+    const tarefa = tarefas.find(t => t.id === id);
+    if (!tarefa) return;
+
+    const novaDescricao = prompt("Editar descrição:", tarefa.descricao);
+    if (novaDescricao === null) return; // Cancelado
+
+    const novoSetor = prompt("Editar setor:", tarefa.setor);
+    if (novoSetor === null) return;
+
+    const novaPrioridade = prompt("Editar prioridade (Baixa, Média, Alta):", tarefa.prioridade);
+    if (novaPrioridade === null) return;
+
+    const novoUsuario = prompt("Editar usuário:", tarefa.usuario);
+    if (novoUsuario === null) return;
+
+    tarefas = tarefas.map(t =>
+        t.id === id
+            ? { ...t, descricao: novaDescricao, setor: novoSetor, prioridade: novaPrioridade, usuario: novoUsuario }
+            : t
+    );
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    renderizarTarefas();
+};
